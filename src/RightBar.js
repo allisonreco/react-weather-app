@@ -7,7 +7,7 @@ export default function RightBar() {
   return (
     <div className="RightBar">
       <div className="RightBarContainer">
-        <img src={"./dogprofilepic.svg"} alt="dog drawing picture" />
+        <img src={"./dogprofilepic.svg"} alt="dog drawing" />
 
         <p>
           <strong>Got some extra time?</strong>
@@ -21,7 +21,11 @@ export default function RightBar() {
 
         <div className="Card">
           <p>On my bark, let's go to the park!</p>
-          <img src={"./map.png"} className="GoogleMap" />
+          <img
+            src={"./map.png"}
+            className="GoogleMap"
+            alt="map of veterinarians"
+          />
         </div>
       </div>
     </div>
