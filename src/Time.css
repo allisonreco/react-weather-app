@@ -1,0 +1,22 @@
+.Time img {
+  margin-top: ;
+}
+.Time .TimeContainer {
+  background-color: #a5e1ee;
+  border-radius: 15px;
+  padding: 5px 10px;
+  width: fit-content;
+}
+
+.Time .TimeContainer p {
+  margin-top: -3px;
+  font-size: 40px;
+  color: #50615b;
+}
+
+.Time p{
+  margin:0;
+}
+.Time .TimeAtCity{
+  font-weight: 300;
+}

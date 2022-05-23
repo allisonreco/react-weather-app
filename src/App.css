@@ -1,0 +1,45 @@
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.App .MainContainer {
+  margin-left: 5em;
+}
+
+.App .SearchBar {
+  background-color: #f8f8f8;
+  border: solid 1px #f8f8f8;
+  border-radius: 35px;
+  padding: 9px 25px;
+  width: 200px;
+  margin-top: 50px;
+}
+.App button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  margin-left: -35px;
+  color: #a6a6a6;
+  padding: 5px;
+  cursor: pointer;
+}
+.App input,
+select,
+textarea {
+  color: #a6a6a6;
+}
+.App .GreetSearch {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.App .ConditionsTime {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.App .ForecastNeeds {
+  display: flex;
+  justify-content: space-evenly;
+}

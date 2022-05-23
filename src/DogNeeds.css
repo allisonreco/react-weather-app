@@ -1,0 +1,19 @@
+.DogNeeds span {
+  color: grey;
+}
+.DogNeeds > p {
+  font-size: 17px;
+}
+.DogNeeds .DogNeedsComponent {
+  border: 1px solid #d8e2dc;
+  width: 230px;
+  border-radius: 35px;
+}
+.DogNeeds .NeedsImg img {
+  width: 95px;
+  height: 65px;
+  margin-top: 0px;
+}
+.DogNeeds .Needs {
+  display: flex;
+}

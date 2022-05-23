@@ -1,0 +1,13 @@
+.ForecastDay .ForecastDayContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  width: 450px;
+  border: 1px solid #d8e2dc;
+  border-radius: 15px;
+  padding: 5px 0px 15px 0px;
+  margin: 15px;
+}
+.ForecastDay .ForecastDayContainer div p {
+  font-size: 17px;
+}

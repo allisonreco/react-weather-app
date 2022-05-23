@@ -1,0 +1,20 @@
+.RightBar {
+ text-align: center;
+  
+}
+.RightBar .RightBarContainer {
+  background-color: #c8dde4;
+  
+}
+
+.RightBar .Card {
+  background-color: white;
+  border-radius: 25px;
+  width: fit-content;
+  padding: 10px 15px;
+  margin:0 auto;
+}
+.RightBar .GoogleMap {
+  width: 300px;
+  border-radius: 25px;
+}
