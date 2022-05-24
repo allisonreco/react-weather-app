@@ -8,16 +8,17 @@ export default function RightBar() {
     <div className="RightBar">
       <div className="RightBarContainer">
         <img src={"./dogprofilepic.svg"} alt="dog drawing" />
-
-        <p>
-          <strong>Got some extra time?</strong>
-        </p>
-        <p>
-          <span>
-            <FontAwesomeIcon icon={faLocationDot} />
-          </span>
-          Doggy parks near me
-        </p>
+        <div className="RightText">
+          <p>
+            <strong>Got some extra time?</strong>
+          </p>
+          <p>
+            <span>
+              <FontAwesomeIcon icon={faLocationDot} />
+            </span>
+            Doggy parks near me
+          </p>
+        </div>
 
         <div className="Card">
           <p>On my bark, let's go to the park!</p>
