@@ -13,6 +13,10 @@
   --color-9: #50615b;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   margin: 0 auto;
   display: flex;
@@ -20,21 +24,26 @@
   justify-content: space-between;
 }
 
-.App .SearchBar {
+.App form {
+  width: 220px;
+}
+
+.App input {
   background-color: var(--color-panel);
   border: none;
   border-radius: 35px;
   padding: 9px 13px;
-  width: 190px;
+  width: 220px;
 }
 
 .App button {
   background-color: transparent;
   border: 1px solid transparent;
-  margin-left: -35px;
   color: var(--color-panel-text);
-  padding: 5px;
   cursor: pointer;
+  position: relative;
+  right: -180px;
+  top: -30px;
 }
 .App input,
 select,
@@ -43,7 +52,7 @@ textarea {
 }
 
 .App .MainContainer {
-  padding: 1em 5em;
+  padding: 2em;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -63,6 +72,10 @@ textarea {
 }
 
 @media screen and (max-width: 700px) {
+  .App .MainContainer {
+    padding: 5px 10px;
+  }
+
   .App .MainContainer > div {
     flex-direction: column;
     padding: 5px 0;

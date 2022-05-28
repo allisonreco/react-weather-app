@@ -2,7 +2,8 @@
   background-color: rgba(165, 225, 238, 0.3);
   color: #333333;
   height: 250px;
-  min-width: 450px;
+  min-width: 380px;
+  width: 100%;
   border-radius: 25px;
   display: flex;
   justify-content: space-around;

@@ -113,6 +113,10 @@ function App() {
   }
 
   async function loadData() {
+    if (!city) {
+      return;
+    }
+
     const locationData = await getLocationData();
 
     if (!locationData) {
@@ -134,7 +138,6 @@ function App() {
           <div>
             <form action="#">
               <input
-                className="SearchBar"
                 type="text"
                 placeholder="Search city..."
                 onChange={changeCity}

@@ -1,3 +1,7 @@
+.Greet {
+  min-width: 380px;
+}
+
 .Greet h1 {
   margin: 0;
 }

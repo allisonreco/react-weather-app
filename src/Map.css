@@ -1,5 +1,6 @@
 .Map {
   width: 100%;
+  max-width: 400px;
   text-align: center;
   background-color: var(--color-background-2);
 }
@@ -19,4 +20,10 @@
 
 .Map .RightText {
   margin-top: -75px;
+}
+
+@media screen and (max-width: 900px) {
+  .Map {
+    max-width: unset;
+  }
 }

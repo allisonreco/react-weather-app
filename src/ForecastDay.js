@@ -7,22 +7,20 @@ export default function ForecastDay(props) {
 
   return (
     <div className="ForecastDay">
-      <div className="ForecastDayContainer">
-        <div>
-          <p>{day}</p>
-        </div>
+      <div>
+        <p>{day}</p>
+      </div>
 
-        <Icon condition={props.condition} size="small" />
+      <Icon condition={props.condition} size="small" />
 
-        <div>
-          <p>
-            {Math.round(props.tempMin)}°C | {Math.round(props.tempMax)}° C
-          </p>
-        </div>
+      <div>
+        <p>
+          {Math.round(props.tempMin)}°C | {Math.round(props.tempMax)}° C
+        </p>
+      </div>
 
-        <div>
-          <p>{props.condition}</p>
-        </div>
+      <div>
+        <p>{props.condition}</p>
       </div>
     </div>
   );

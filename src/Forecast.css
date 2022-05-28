@@ -1,3 +1,7 @@
+.Forecast {
+  width: 100%;
+}
+
 .Forecast > p {
   font-size: 17px;
 }
