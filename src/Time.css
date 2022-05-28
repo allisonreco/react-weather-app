@@ -1,22 +1,28 @@
-.Time img {
-  margin-top: ;
-}
-.Time .TimeContainer {
+.Time {
   background-color: #a5e1ee;
-  border-radius: 15px;
+  height: 240px;
+  border-radius: 25px;
   padding: 5px 10px;
-  width: fit-content;
 }
 
-.Time .TimeContainer p {
+.Time p,
+.Time h2 {
   margin-top: -3px;
   font-size: 40px;
   color: #50615b;
+  margin-bottom: -14px;
 }
 
-.Time p{
-  margin:0;
+.Time img {
+  margin-top: 0;
 }
-.Time .TimeAtCity{
+
+.Time .TimeAtCity {
   font-weight: 300;
+}
+
+@media screen and (max-width: 700px) {
+  .Time {
+    width: 100%;
+  }
 }

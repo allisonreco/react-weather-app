@@ -8,9 +8,9 @@ export default function Greet(props) {
 
   return (
     <div className="Greet">
-      <p>
-        <span>Woof Morning, </span> <strong>Hooman!</strong>
-      </p>
+      <h1>
+        Woof Morning, <strong>Hooman!</strong>
+      </h1>
       <p className="Date">Today is {message}</p>
     </div>
   );

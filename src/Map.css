@@ -1,22 +1,22 @@
-.RightBar {
+.Map {
+  width: 100%;
   text-align: center;
-}
-.RightBar .RightBarContainer {
-  background-color: #c8dde4;
+  background-color: var(--color-background-2);
 }
 
-.RightBar .Card {
-  background-color: white;
+.Map .Card {
+  background-color: var(--color-background-1);
   border-radius: 25px;
   width: fit-content;
   padding: 10px 15px;
   margin: auto;
 }
-.RightBar .GoogleMap {
+
+.Map .GoogleMap {
   width: 300px;
   border-radius: 25px;
 }
 
-.RightBar .RightText {
+.Map .RightText {
   margin-top: -75px;
 }

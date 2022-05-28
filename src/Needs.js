@@ -1,12 +1,38 @@
 import React from "react";
-import "./DogNeeds.css";
+import "./Needs.css";
+import NeedItem from "./NeedItem";
 
-export default function DogNeeds() {
+export default function Needs() {
   return (
-    <div className="DogNeeds">
-      <p>
-        <strong>Are my needs met?</strong>
-      </p>
+    <div className="Needs">
+      <h3>Are my needs met?</h3>
+      <div>
+        <NeedItem
+          icon="waterbowl"
+          title="Water"
+          unit="%"
+          max={100}
+          increment={20}
+        />
+
+        <NeedItem
+          icon="foodbowl"
+          title="Food"
+          unit="%"
+          max={100}
+          increment={30}
+        />
+
+        <NeedItem
+          icon="ball"
+          title="Play time"
+          unit="min"
+          max={30}
+          increment={5}
+        />
+      </div>
+
+      {/*}
       <div className="DogNeedsComponent">
         <div className="Needs">
           <div className="NeedsImg">
@@ -50,6 +76,8 @@ export default function DogNeeds() {
           </div>
         </div>
       </div>
+
+      {*/}
     </div>
   );
 }

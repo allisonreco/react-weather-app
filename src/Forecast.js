@@ -5,22 +5,22 @@ import ForecastDay from "./ForecastDay";
 
 const DEFAULT_FORECAST = [
   {
-    day: DateTime.now().plus({ days: 1 }).toJSDate(),
-    tempMin: 8,
-    tempMax: 9,
-    description: "sunny",
+    day: DateTime.now().plus({ days: 1 }),
+    tempMin: 13,
+    tempMax: 19,
+    condition: "Clear",
   },
   {
-    day: DateTime.now().plus({ days: 2 }).toJSDate(),
-    tempMin: 8,
-    tempMax: 9,
-    description: "sunny",
+    day: DateTime.now().plus({ days: 2 }),
+    tempMin: 16,
+    tempMax: 27,
+    condition: "Clouds",
   },
   {
-    day: DateTime.now().plus({ days: 3 }).toJSDate(),
-    tempMin: 8,
-    tempMax: 9,
-    description: "sunny",
+    day: DateTime.now().plus({ days: 3 }),
+    tempMin: 19,
+    tempMax: 28,
+    condition: "Drizzle",
   },
 ];
 
@@ -32,7 +32,7 @@ export default function Forecast(props) {
 
   return (
     <div className="Forecast">
-      <strong>Forecast for the next days...</strong>
+      <h3>Forecast for the next days...</h3>
       <div>
         {forecast.map((data, i) => {
           return (
@@ -41,7 +41,7 @@ export default function Forecast(props) {
               day={data.day}
               tempMin={data.tempMin}
               tempMax={data.tempMax}
-              description={data.description}
+              condition={data.condition}
             />
           );
         })}

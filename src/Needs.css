@@ -1,0 +1,33 @@
+.Needs > div {
+  border: 1px solid #d8e2dc;
+  width: 230px;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 29px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/*
+
+.Needs span {
+  color: grey;
+}
+.Needs > p {
+  font-size: 17px;
+}
+.Needs .DogNeedsComponent {
+  border: 1px solid #d8e2dc;
+  width: 230px;
+  border-radius: 25px;
+}
+.Needs .NeedsImg img {
+  width: 95px;
+  height: 65px;
+  margin-top: 0px;
+}
+.Needs .Needs {
+  display: flex;
+}
+*/

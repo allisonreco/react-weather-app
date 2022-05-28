@@ -1,11 +1,9 @@
-import { DateTime } from "luxon";
 import React from "react";
 import "./ForecastDay.css";
+import Icon from "./Icon";
 
 export default function ForecastDay(props) {
-  const day = props.day
-    ? DateTime.fromJSDate(props.day).toFormat("cccc")
-    : "---";
+  const day = props.day ? props.day.toFormat("cccc") : "---";
 
   return (
     <div className="ForecastDay">
@@ -14,7 +12,7 @@ export default function ForecastDay(props) {
           <p>{day}</p>
         </div>
 
-        <div>☀️</div>
+        <Icon condition={props.condition} size="small" />
 
         <div>
           <p>
@@ -23,7 +21,7 @@ export default function ForecastDay(props) {
         </div>
 
         <div>
-          <p>{props.description}</p>
+          <p>{props.condition}</p>
         </div>
       </div>
     </div>

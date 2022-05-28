@@ -4,17 +4,12 @@ import Conditions from "./Conditions.js";
 import Greet from "./Greet.js";
 import Time from "./Time.js";
 import Forecast from "./Forecast.js";
-import DogNeeds from "./DogNeeds.js";
+import Needs from "./Needs.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import RightBar from "./RightBar";
+import Map from "./Map";
 import axios from "axios";
-
-/**
- *
- * TODOs
- * * Pass values to components as props
- */
+import { DateTime } from "luxon";
 
 function App() {
   let [city, setCity] = useState("");
@@ -23,38 +18,72 @@ function App() {
     condition: null,
     humidity: null,
     wind: null,
+    city: null,
     dayNight: "day",
     time: null,
-    city: null,
     minTemp: null,
     maxTemp: null,
     forecast: [],
   });
 
-  function handleWeatherDataResponse(response) {
-    console.log(response);
-    const timezoneOffset = new Date().getTimezoneOffset() * 60;
-    const currentDate = new Date(
-      (response.data.dt + response.data.timezone + timezoneOffset) * 1000
-    );
-    const dayNight = getDayNight(
-      response.data.dt,
-      response.data.sys.sunrise,
-      response.data.sys.sunset
-    );
+  async function getLocationData() {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed382637ed83e5508a8eed5925733c11&units=metric`;
 
-    setWeatherData({
-      temperature: response.data.main.temp,
-      condition: response.data.weather[0].main,
-      humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
-      time: currentDate,
-      dayNight,
-      city: response.data.name,
-      minTemp: response.data.main.temp_min,
-      maxTemp: response.data.main.temp_max,
-      forecast: [],
-    });
+    try {
+      const response = await axios.get(url);
+
+      return {
+        city: response.data.name,
+        latitude: response.data.coord.lat,
+        longitude: response.data.coord.lon,
+      };
+    } catch (error) {
+      handleError(error);
+    }
+  }
+
+  async function setWeatherDataFromApi(locationData) {
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${locationData.latitude}&lon=${locationData.longitude}&exclude=minutely,hourly,alerts&units=metric&appid=ed382637ed83e5508a8eed5925733c11`;
+    try {
+      const response = await axios.get(url);
+
+      const data = response.data;
+      const zone = data.timezone;
+
+      const currentDate = DateTime.fromSeconds(data.current.dt, {
+        zone,
+      });
+
+      const dayNight = getDayNight(
+        data.current.dt,
+        data.current.sunrise,
+        data.current.sunset
+      );
+      const forecast = data.daily.slice(1, 4).map((dailyData) => ({
+        day: DateTime.fromSeconds(dailyData.dt, {
+          zone,
+        }),
+        tempMin: dailyData.temp.min,
+        tempMax: dailyData.temp.max,
+        condition: dailyData.weather[0].main,
+      }));
+
+      setWeatherData({
+        temperature: data.current.temp,
+        condition: data.current.weather[0].main,
+        feelsLike: data.current.feels_like,
+        humidity: data.current.humidity,
+        wind: data.current.wind_speed,
+        time: currentDate,
+        city: locationData.city,
+        dayNight,
+        minTemp: data.daily[0].temp.min,
+        maxTemp: data.daily[0].temp.max,
+        forecast,
+      });
+    } catch (error) {
+      handleError(error);
+    }
   }
 
   function getDayNight(date, sunrise, sunset) {
@@ -65,15 +94,22 @@ function App() {
     }
   }
 
-  function handleError() {
+  function handleError(error) {
+    console.error(error);
+
+    // TODO error handling
     alert("Please enter a valid city");
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ed382637ed83e5508a8eed5925733c11&units=metric`;
 
-    axios.get(url).then(handleWeatherDataResponse).catch(handleError);
+    const locationData = await getLocationData();
+
+    if (!locationData) {
+      return;
+    }
+    await setWeatherDataFromApi(locationData);
   }
 
   function changeCity(event) {
@@ -83,10 +119,10 @@ function App() {
   return (
     <div className="App">
       <div className="MainContainer">
-        <div className="GreetSearch">
+        <div>
           <Greet />
 
-          <div className="Search">
+          <div>
             <form action="#">
               <input
                 className="SearchBar"
@@ -101,22 +137,24 @@ function App() {
           </div>
         </div>
 
-        <div className="ConditionsTime">
+        <div>
           <Conditions
             condition={weatherData.condition}
             temperature={weatherData.temperature}
             maxTemp={weatherData.maxTemp}
             minTemp={weatherData.minTemp}
+            feelsLike={weatherData.feelsLike}
+            humidity={weatherData.humidity}
+            wind={weatherData.wind}
           />
           <Time city={weatherData.city} time={weatherData.time} />
         </div>
-
-        <div className="ForecastNeeds">
-          <Forecast />
-          <DogNeeds />
+        <div>
+          <Forecast forecast={weatherData.forecast} />
+          <Needs />
         </div>
       </div>
-      <RightBar />
+      <Map />
     </div>
   );
 }

@@ -2,3 +2,8 @@
   font-size: 17px;
 }
 
+.Forecast > div {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}

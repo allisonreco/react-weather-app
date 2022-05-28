@@ -1,0 +1,37 @@
+.NeedItem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.NeedItem img {
+  width: 95px;
+  height: 65px;
+}
+
+.NeedItem p {
+  margin: 0px;
+  font-weight: 300;
+}
+
+.NeedItem .NeedValue {
+  font-weight: 600;
+}
+
+.NeedItem .NeedUnit {
+  color: var(--color-panel-text);
+}
+
+.NeedItem .PlusMinusButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 32px;
+  color: var(--color-8);
+  margin-top: -6px;
+}
+
+.NeedItem .PlusMinusButtons > svg:hover {
+  color: var(--color-4);
+  cursor: pointer;
+}

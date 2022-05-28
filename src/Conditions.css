@@ -1,20 +1,26 @@
-.Conditions .ConditionsContainer {
+.Conditions {
   background-color: rgba(165, 225, 238, 0.3);
   color: #333333;
-  width: 450px;
-  border-radius: 15px;
+  height: 250px;
+  min-width: 450px;
+  border-radius: 25px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 .Conditions .ConditionsRight h2 {
-  text-align: center;
-  font-size: 40px;
+  font-size: 50px;
+  margin-bottom: 0px;
+}
+.Conditions .ConditionsRight ul li {
+  text-align: left;
+  margin-left: -40px;
+  margin-top: 0px;
 }
 
 .Conditions .ConditionsIcon {
-  font-size: 80px;
+  font-size: 100px;
   color: #a5e1ee;
 }
 
@@ -24,4 +30,10 @@
 
 .Conditions ul {
   list-style: none;
+}
+
+@media screen and (max-width: 700px) {
+  .Conditions {
+    width: 100%;
+  }
 }
