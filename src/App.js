@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Conditions from "./Conditions.js";
 import Greet from "./Greet.js";
@@ -24,6 +24,11 @@ function App() {
     minTemp: null,
     maxTemp: null,
     forecast: [],
+  });
+
+  useEffect(() => {
+    const interval = setInterval(loadData, 30000);
+    return () => clearInterval(interval);
   });
 
   async function getLocationData() {
@@ -104,6 +109,10 @@ function App() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    loadData();
+  }
+
+  async function loadData() {
     const locationData = await getLocationData();
 
     if (!locationData) {
