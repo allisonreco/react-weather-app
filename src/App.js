@@ -8,8 +8,11 @@ import Needs from "./Needs.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import Map from "./Map";
+import Error from "./Error";
 import axios from "axios";
 import { DateTime } from "luxon";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   let [city, setCity] = useState("");
@@ -43,7 +46,7 @@ function App() {
         longitude: response.data.coord.lon,
       };
     } catch (error) {
-      handleError(error);
+      handleApiError(error);
     }
   }
 
@@ -87,7 +90,7 @@ function App() {
         forecast,
       });
     } catch (error) {
-      handleError(error);
+      handleApiError(error);
     }
   }
 
@@ -99,11 +102,14 @@ function App() {
     }
   }
 
-  function handleError(error) {
-    console.error(error);
+  function handleApiError(error) {
+    let message = error.message;
+    if (error.response?.data?.cod === "404") {
+      message = `Could not find weather at city "${city}". Please check your spelling.`;
+    }
 
-    // TODO error handling
-    alert("Please enter a valid city");
+    toast.error(message);
+    setCity("");
   }
 
   async function handleSubmit(event) {
@@ -131,10 +137,10 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <div className="MainContainer">
         <div>
           <Greet />
-
           <div>
             <form action="#">
               <input

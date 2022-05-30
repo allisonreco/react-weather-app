@@ -15,6 +15,7 @@
 
 * {
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .App {
@@ -22,6 +23,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: fit-content;
 }
 
 .App form {
@@ -52,6 +54,7 @@ textarea {
 }
 
 .App .MainContainer {
+  margin: 0 auto;
   padding: 2em;
   display: flex;
   flex-direction: column;
@@ -61,7 +64,6 @@ textarea {
 .App .MainContainer > div {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 20px;
 }
 
@@ -79,5 +81,6 @@ textarea {
   .App .MainContainer > div {
     flex-direction: column;
     padding: 5px 0;
+    padding-bottom: 10px;
   }
 }
